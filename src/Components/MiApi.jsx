@@ -41,13 +41,6 @@ const MiApi = () => {
         setPersonajes(ordenaPersonajes);
     };
 
-    const ordenaId = () => {
-        const ordenaPersonajes = [...personajes].sort((a, b) =>
-            a.name > b.name ? 1 : -1
-        );
-        setPersonajes(ordenaPersonajes);
-    };
-
     useEffect(() => {
         apiPersonajes(); //LLAMADO A LA FUNCION DE CONSUMO DE LA API
     }, []); // ARREGLO DE DEPENDECIAS VACIO
@@ -58,13 +51,14 @@ const MiApi = () => {
             <h1>Personajes de Harry Potter</h1>
             <input className="form-control" value={busqueda} placeholder="Escriba el nombre del personaje a buscar..." onChange={nuevaBusqueda} />
             <hr />
-            <h1>Listado de Personajes</h1>
+            <h2>Listado de Personajes</h2>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr className="encabezados">
                         <th>NOMBRE <Button variant="success" size="sm" onClick={ordenaNombre}>A-Z</Button></th>
                         <th>ESPECIE</th>
                         <th>CASA</th>
+                        <th>ACTOR</th>
             
                     </tr>
                 </thead>
@@ -74,6 +68,7 @@ const MiApi = () => {
                             <td>{hp.name}</td>
                             <td>{hp.species}</td>
                             <td>{hp.house}</td>
+                            <td>{hp.actor}</td>
                             
                     
                         </tr>
